@@ -211,4 +211,14 @@ h1 {
     color: var(--bs-heading-color);
     text-align: center;
 }
+
+@media (width < 576px) {
+    .js-cursor {
+        display: none;
+    }
+
+    * {
+        cursor: auto;
+    }
+}
 /*440px*/
