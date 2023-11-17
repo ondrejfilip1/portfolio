@@ -212,7 +212,7 @@ h1 {
     text-align: center;
 }
 
-@media (width < 576px) {
+@media (max-width: 576px) {
     .js-cursor {
         display: none;
     }
