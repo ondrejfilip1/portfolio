@@ -173,6 +173,11 @@ h1 {
 .work a img {
     max-width: 100%;
     border-radius: 6px;
+    transition: .3s box-shadow;
+}
+
+.work:hover a img {
+    box-shadow: rgba(255, 255, 255, 0.24) 0px 0px 15px;
 }
 
 .email,.email-text {
