@@ -314,7 +314,7 @@ h1 {
     }
 }
 
-@media (max-width: 411px) {
+@media (max-width: 412px) {
     header {
         font-size: 0.9rem;
     }
