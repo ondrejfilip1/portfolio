@@ -135,6 +135,7 @@ header a:last-child::after {
 
 .form-switch .form-check-input:checked + svg#light-icon + svg#dark-icon {
     opacity: 0;
+    filter: invert(1);
 }
 
 h1 {
