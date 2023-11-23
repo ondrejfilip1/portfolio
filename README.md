@@ -1,5 +1,3 @@
 # My portfolio
 
-<p align="center">
-[Visit](https://ondrejfilip1.github.io/portfolio/)
-</p>
+<a href="https://ondrejfilip1.github.io/portfolio/">Visit</a>
