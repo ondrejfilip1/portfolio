@@ -112,6 +112,31 @@ header a:last-child::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23ffffff'/%3e%3c/svg%3e")!important;
 }
 
+.form-switch svg {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    pointer-events: none;
+    opacity: .8;
+    transition: .2s opacity;
+}
+
+.form-switch svg#dark-icon {
+    right: 18px;
+}
+.form-switch svg#light-icon {
+    right: 36px;
+}
+
+.form-switch .form-check-input:not(:checked) + svg#light-icon {
+    opacity: 0;
+}
+
+.form-switch .form-check-input:checked + svg#light-icon + svg#dark-icon {
+    opacity: 0;
+}
+
 h1 {
     font-family: "MonumentGroteskBold";
 }
@@ -202,7 +227,8 @@ h1 {
 
 
 .languages {
-    backdrop-filter: blur(3px) brightness(250%);
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.08);
     width: fit-content;
     border-radius: 6px;
     /*border: 1px solid rgba(255, 255, 255, 0.1);*/
