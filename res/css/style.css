@@ -43,7 +43,7 @@ body {
 }
 
 header {
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(18px);
     background-color: rgba(0, 0, 0, 0.05);
     z-index: 99;
     font-family: 'Inter', sans-serif;
