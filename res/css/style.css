@@ -19,6 +19,7 @@
 
 html {
     scroll-behavior: smooth;
+    transition: .2s filter;
 }
 
 body {
@@ -301,7 +302,7 @@ h1 {
 .work a img {
     max-width: 100%;
     border-radius: 6px;
-    transition: .3s box-shadow;
+    transition: .3s box-shadow, .2s filter;
 }
 
 .work:hover a img {
