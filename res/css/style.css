@@ -172,7 +172,7 @@ h1 {
     width: 20px;
     height: 20px;
     border-radius: 100%;
-    transition: transform .4s cubic-bezier(.23, 1, .32, 1), .6s width, .6s height, .6s opacity, .3s filter, .3s border-radius;
+    transition: transform .2s cubic-bezier(.23, 1, .32, 1), .6s width, .6s height, .6s opacity, .3s filter, .3s border-radius;
     backdrop-filter: invert(1);
     z-index: 999;
 }
