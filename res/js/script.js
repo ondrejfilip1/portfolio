@@ -107,6 +107,7 @@ window.addEventListener("scroll", () => {
 
 const descriptionWork = document.querySelector('.description-work');
 const workClass = document.querySelectorAll('.work');
+let currentDescription = ""; // store current desc
 
 const updateDescription = (e) => {
   let target = e.target;
@@ -116,37 +117,45 @@ const updateDescription = (e) => {
   }
 
   if (target && target.id.startsWith('work-hover-')) {
+    let newDescription = ""; // store new desc
     switch (target.id) {
       case 'work-hover-1':
-        descriptionWork.innerHTML = 'Paintings by Tim Lee<br><span class="yellow-text">Bootstrap, Custom CSS</span>';
+        newDescription = 'Paintings by Tim Lee<br><span class="yellow-text">Bootstrap, Custom CSS</span>';
         break;
       case 'work-hover-2':
-        descriptionWork.innerHTML = 'Cookie clicker<br><span class="yellow-text">Custom CSS & JS</span>';
+        newDescription = 'Cookie clicker<br><span class="yellow-text">Custom CSS & JS</span>';
         break;
       case 'work-hover-3':
-        descriptionWork.innerHTML = 'Modern school website<br><span class="yellow-text" style="">Bootstrap, Custom CSS</span>';
+        newDescription = 'Modern school website<br><span class="yellow-text" style="">Bootstrap, Custom CSS</span>';
         break;
       default:
-        descriptionWork.innerText = "";
+        newDescription = "";
+    }
+
+    // updating overload fix
+    if (newDescription !== currentDescription) {
+      descriptionWork.innerHTML = newDescription;
+      currentDescription = newDescription; // update current desc
     }
   }
 }
 
-document.addEventListener("mousemove", moveCursor);
+document.addEventListener("mousemove", (e) => {
+  moveCursor(e);
+  updateDescription(e);
+});
 
 const startFollowing = () => {
-  document.addEventListener('mousemove', updateDescription);
   descriptionWork.style.opacity = "1";
   descriptionWork.style.scale = "1";
 }
 
 const stopFollowing = () =>  {
-  document.removeEventListener('mousemove', updateDescription);
   descriptionWork.style.opacity = "0";
   descriptionWork.style.scale = "0.8";
 }
 
-workClass.forEach(function(workClasses) {
+workClass.forEach(workClasses => {
   workClasses.addEventListener('mouseover', startFollowing);
   workClasses.addEventListener('mouseout', stopFollowing);
 });
