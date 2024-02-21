@@ -172,7 +172,7 @@ h1 {
     width: 20px;
     height: 20px;
     border-radius: 100%;
-    transition: transform .2s cubic-bezier(.23, 1, .32, 1), .6s width, .6s height, .6s opacity, .3s filter, .3s border-radius;
+    transition: left .2s cubic-bezier(.23, 1, .32, 1), top .2s cubic-bezier(.23, 1, .32, 1), .6s width, .6s height, .6s opacity, .3s filter, .3s border-radius;
     backdrop-filter: invert(1);
     z-index: 999;
 }
@@ -228,6 +228,24 @@ h1 {
     }
 }
 
+.description-work {
+    opacity: 0;
+    scale: 0.8;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -.01em;
+    background-color: #23212e81;
+    backdrop-filter: blur(6px);
+    display: inline-block;
+    width: fit-content;
+    border-radius: 4px;
+    padding: .5rem .75rem;
+    position: fixed;
+    z-index: 99;
+    pointer-events: none;
+    box-shadow: rgba(0, 0, 0, 0.36) 0px 22px 70px 4px;
+    transition: .5s left cubic-bezier(.23, 1, .32, 1), .5s top cubic-bezier(.23, 1, .32, 1), .3s opacity, .3s scale;
+    margin-top: 30px;
+}
 
 .languages {
     backdrop-filter: blur(3px);
@@ -299,6 +317,11 @@ h1 {
     opacity: 1;
 }
 
+.work a {
+    height: 100%;
+    display: block;
+}
+
 .work a img {
     max-width: 100%;
     border-radius: 6px;
@@ -307,6 +330,12 @@ h1 {
 
 .work:hover a img {
     box-shadow: rgba(255, 255, 255, 0.24) 0px 0px 15px;
+}
+
+.yellow-text {
+    color: #ffc400;
+    transition: .2s filter;
+    font-size: 13px;
 }
 
 .email,
