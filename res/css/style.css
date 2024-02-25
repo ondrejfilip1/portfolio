@@ -350,7 +350,7 @@ h1 {
 
 .yellow-text {
     color: #ffc400;
-    transition: .2s filter;
+    transition: .2s filter, .2s color;
     font-size: 13px;
 }
 
@@ -400,6 +400,54 @@ h1 {
     text-align: center;
 }
 
+.grid {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-size: 8.33333vw 8.33333vw;
+    background-image: linear-gradient(to right, #ffffff2c 1px, transparent 1px), linear-gradient(to bottom, #ffffff2c 1px, transparent 1px);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .9) 35%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 80%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .9) 35%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 80%);
+    -webkit-mask-size: 35vw 35vw;
+    mask-size: 35vw 35vw;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    transition: mask-position .2s cubic-bezier(.23, 1, .32, 1);
+}
+
+.z-index-fix {
+    position: relative;
+    z-index: 9;
+}
+
+span .gradient-text {
+    /*
+    background: -webkit-linear-gradient(0deg, #8f529d, #b1a0ff, #8f529d, #b1a0ff);
+    */
+    /*
+    background: -webkit-linear-gradient(0deg, #bbb, #4d4d4d, #bbb, #4d4d4d);
+    */
+    background: -webkit-linear-gradient(0deg, #642b73, #c6426e, #642b73, #c6426e);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: 10s background-animation infinite;
+    padding-right: .1vw;
+    transition: .2s filter;
+}
+
+@keyframes background-animation {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 @media (max-width: 576px) {
     .js-cursor {
         display: none;
@@ -410,6 +458,10 @@ h1 {
     }
 
     header a {
+        cursor: pointer;
+    }
+
+    .email-link {
         cursor: pointer;
     }
 }
