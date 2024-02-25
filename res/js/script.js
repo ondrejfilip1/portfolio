@@ -1,6 +1,25 @@
 const cursor = document.querySelector(".js-cursor");
+const grid = document.querySelector(".grid");
+const gradientText = document.querySelector(".gradient-text");
 let mouseX = 0;
 let mouseY = 0;
+let scrollOffset = 0;
+
+document.body.onload = () => {
+  const randomNumber = Math.floor(Math.random() * 4);
+  console.log(randomNumber);
+  if (randomNumber == 0) {
+    gradientText.style.background = "-webkit-linear-gradient(0deg, #642b73, #c6426e, #642b73, #c6426e)";
+  } else if (randomNumber == 1) {
+    gradientText.style.background = "-webkit-linear-gradient(0deg, #4568dc, #b06ab3, #4568dc, #b06ab3)";
+  } else if (randomNumber == 2) {
+    gradientText.style.background = "-webkit-linear-gradient(0deg, #ff5f6d, #ffc371, #ff5f6d, #ffc371)";
+  } else if (randomNumber == 3) {
+    gradientText.style.background = "-webkit-linear-gradient(0deg, #f3904f, #574931, #f3904f, #574931)";
+  }
+  gradientText.style.backgroundSize = "400% 400%";
+  gradientText.style.webkitBackgroundClip = "text";
+}
 
 const moveCursor = (e) => {
   mouseX = e.clientX;
@@ -13,6 +32,11 @@ const updateCursor = () => {
   cursor.style.left = `${mouseX - 10}px`;
   descriptionWork.style.left = `${mouseX}px`;
   descriptionWork.style.top = `${mouseY}px`;
+}
+
+const updateGridPos = () => {
+  scrollOffset = document.body.scrollHeight - window.innerHeight - window.scrollY;
+  grid.style.maskPosition = `calc(${mouseX}px - 28%) calc(${mouseY}px - 16vw - ${scrollOffset}px)`;
 }
 
 const biggerCursor = document.querySelectorAll(".bigger-cursor");
@@ -57,6 +81,11 @@ checkbox.addEventListener("change", () => {
   // Invert colors of images
   images.forEach((element) => {
     element.style.filter = invertFilter ? "" : "invert(1)";
+  });
+  gradientText.style.filter = invertFilter ? "" : "invert(1)";
+  document.querySelectorAll(".yellow-text").forEach((element) => {
+    element.style.filter = invertFilter ? "" : "invert(1)";
+    element.style.color =  invertFilter ? "#ffc400" : "#000";
   });
 });
 
@@ -135,6 +164,11 @@ const updateDescription = (e) => {
     // updating overload fix
     if (newDescription !== currentDescription) {
       descriptionWork.innerHTML = newDescription;
+      const invertFilter = document.documentElement.style.filter !== "invert(1)";
+      document.querySelectorAll(".yellow-text").forEach((element) => {
+        element.style.filter = invertFilter ? "" : "invert(1)";
+        element.style.color =  invertFilter ? "#ffc400" : "#000";
+      });
       currentDescription = newDescription; // update current desc
     }
   }
@@ -143,6 +177,11 @@ const updateDescription = (e) => {
 document.addEventListener("mousemove", (e) => {
   moveCursor(e);
   updateDescription(e);
+  requestAnimationFrame(updateGridPos);
+});
+
+document.addEventListener("scroll", (e) => {
+  requestAnimationFrame(updateGridPos);
 });
 
 const startFollowing = () => {
