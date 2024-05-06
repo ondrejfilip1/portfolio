@@ -205,11 +205,11 @@ h1 {
 }
 
 .height1 {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .height2 {
-    height: 55vh;
+    min-height: 55vh;
 }
 
 /*.my-custom {
@@ -466,7 +466,7 @@ span .gradient-text {
     }
 }
 
-@media (max-width: 538px) {
+@media (max-width: 642px) {
     .wrapper-icons {
         flex-grow: 1;
         padding-left: 0 !important;
@@ -474,7 +474,7 @@ span .gradient-text {
     }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 522px) {
     .margin-languages {
         margin-left: 1rem !important;
         margin-right: 1rem !important;
