@@ -339,14 +339,19 @@ h1 {
     display: block;
 }
 
-.work a img {
+.work a div, .work a img {
+    aspect-ratio: 16 / 9;
     max-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
     border-radius: 6px;
-    transition: .3s box-shadow, .2s filter;
+    transition: .3s box-shadow, .2s filter, 5s background-position ease-in-out;
 }
 
-.work:hover a img {
+.work:hover a img, .work:hover a div {
     box-shadow: rgba(255, 255, 255, 0.24) 0px 0px 15px;
+    background-position: bottom;
 }
 
 .yellow-text {
