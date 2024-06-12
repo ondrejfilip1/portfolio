@@ -154,9 +154,12 @@ const updateDescription = (e) => {
       case 'work-hover-2':
         newDescription = 'Cookie clicker<br><span class="yellow-text">Custom CSS & JS</span>';
         break;
-      case 'work-hover-3':
-        newDescription = 'Modern school website<br><span class="yellow-text" style="">Bootstrap, Custom CSS</span>';
-        break;
+        case 'work-hover-3':
+          newDescription = 'Modern school website<br><span class="yellow-text" style="">Bootstrap, Custom CSS</span>';
+          break;
+          case 'work-hover-4':
+            newDescription = 'Modern website for Pilsen Region<br><span class="yellow-text" style="">React, MUI, shadcn/ui, Tailwind CSS</span>';
+            break;
       default:
         newDescription = "";
     }
