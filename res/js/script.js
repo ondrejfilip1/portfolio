@@ -55,19 +55,6 @@ biggerCursor.forEach((element) => {
     cursor.classList.remove("hovered");
   });
 });
-
-const linkCursor = document.querySelectorAll(".link-cursor");
-
-linkCursor.forEach((element) => {
-  element.addEventListener("mouseover", () => {
-    cursor.classList.add("hovered-link");
-  });
-
-  element.addEventListener("mouseout", () => {
-    cursor.classList.remove("hovered-link");
-  });
-});
-
 document.addEventListener("mouseleave", () => {
   cursor.style.opacity = "0";
 });
@@ -210,4 +197,23 @@ const stopFollowing = () => {
 workClass.forEach((workClasses) => {
   workClasses.addEventListener("mouseover", startFollowing);
   workClasses.addEventListener("mouseout", stopFollowing);
+});
+
+document.onclick = () => {
+  cursor.style.animation = "none";
+  void cursor.offsetWidth;
+  cursor.style.animation = "animationClick 1s cubic-bezier(0.54, 1.84, 0.25, 1)";
+}
+const linkCursor = document.querySelectorAll(".link-cursor");
+
+linkCursor.forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    cursor.classList.add("hovered-link");
+    cursor.style.borderRadius = "0";
+  });
+
+  element.addEventListener("mouseout", () => {
+    cursor.style.borderRadius = "100%";
+    cursor.classList.remove("hovered-link");
+  });
 });
