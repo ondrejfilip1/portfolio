@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./res/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./res/css/style.css" />
   <title>Ondřej Filip - Portfolio</title>
+
 </head>
 
 <body>
@@ -47,7 +48,16 @@
   </header>
 
   <div class="d-flex align-items-center justify-content-center flex-column height1" id="home">
-    <h1 class="display-custom bigger-cursor text-center">Ondřej Filip</h1>
+    <h1 class="display-custom bigger-cursor text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dee2e6" stroke="#dee2e6" stroke-width=".5" stroke-linecap="round" stroke-linejoin="round" style="width: .22em">
+        <path d="M12 5v14m-7-7h14" />
+      </svg>
+      <!--<span class="numbering">01</span>!-->
+      Ondřej Filip
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dee2e6" stroke="#dee2e6" stroke-width=".5" stroke-linecap="round" stroke-linejoin="round" style="width: .22em">
+        <path d="M12 5v14m-7-7h14" />
+      </svg>
+    </h1>
     <div class="overflow-hidden">
       <p class="lead description description-anim bigger-cursor text-center">
         I'm a 17 year old programmer from Czechia. <br />I find passion in
@@ -165,7 +175,8 @@
           <div class="work p-0">
             <div class="m-3">
               <a href="https://www.paintingsbytimlee.co.uk" class="link-cursor" target="_blank">
-                <div style="background-image: url('./res/img/paintingsbytimlee.jpeg')" alt="Paintings by Tim Lee" class="image"></div>
+                <div style="background-image: url('./res/img/paintingsbytimlee.jpeg')" alt="Paintings by Tim Lee"
+                  class="image"></div>
               </a>
             </div>
           </div>
@@ -183,7 +194,8 @@
           <div class="work p-0">
             <div class="m-3">
               <a href="https://ondrejfilip1.github.io/Moderni-stanka-SPSMB" class="link-cursor" target="_blank">
-                <div style="background-image: url('./res/img/modern-school-website.jpeg');" alt="Modern school website" class="image"></div>
+                <div style="background-image: url('./res/img/modern-school-website.jpeg');" alt="Modern school website"
+                  class="image"></div>
               </a>
             </div>
           </div>
@@ -192,7 +204,8 @@
           <div class="work p-0">
             <div class="m-3">
               <a href="https://github.com/ondrejfilip1/obec-stranka" class="link-cursor" target="_blank">
-                <div style="background-image: url('./res/img/plzenskykraj.jpg');" alt="Modern website for Pilsen Region" class="image"></div>
+                <div style="background-image: url('./res/img/plzenskykraj.jpg');" alt="Modern website for Pilsen Region"
+                  class="image"></div>
               </a>
             </div>
           </div>
@@ -204,7 +217,7 @@
   <div class="grid"></div>
   <div class="height1 d-flex align-items-center justify-content-center flex-column" id="contact-me">
     <span class="onScroll z-index-fix">
-      <h1 class="bigger-cursor text-center letter-spacing-header my-4 display-5">
+      <h1 class="bigger-cursor text-center letter-spacing-header display-5 line-height-gr">
         Want a <span class="gradient-text">website</span>?
       </h1>
       <p class="lead description bigger-cursor text-center email">
@@ -227,6 +240,7 @@
       VanillaTilt.init(element, {
         max: 6,
         speed: 400,
+        reverse: true,
       });
     });
   </script>
