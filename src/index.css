@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "TWKLausanne";
+  font-weight: 150;
+  src: url("./assets/fonts/TWKLausanne/TWKLausanne-150.woff2");
+}
+
+@font-face {
+  font-family: "TWKLausanne";
+  font-weight: 350;
+  src: url("./assets/fonts/TWKLausanne/TWKLausanne-350.woff2");
+}
+
+@font-face {
+  font-family: "TWKLausanne";
+  font-weight: 750;
+  src: url("./assets/fonts/TWKLausanne/TWKLausanne-750.woff2");
+}
+
+@font-face {
+  font-family: "Dirtyline";
+  src: url("./assets/fonts/Dirtyline/Dirtyline.woff2");
+}
+
+:root {
+  --font-primary: "TWKLausanne";
+  --font-dirtyline: "Dirtyline"
+  --color-mule-fawn-50: #fbf6f1;
+  --color-mule-fawn-100: #f5ebdf;
+  --color-mule-fawn-200: #ead4be;
+  --color-mule-fawn-300: #ddb594;
+  --color-mule-fawn-400: #ce9169;
+  --color-mule-fawn-500: #c4774b;
+  --color-mule-fawn-600: #b66240;
+  --color-mule-fawn-700: #904a34;
+  --color-mule-fawn-800: #7a4032;
+  --color-mule-fawn-900: #63362b;
+  --color-mule-fawn-950: #351a15;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-mule-fawn-100);
+  color: var(--color-mule-fawn-800);
+  min-height: 100vh;
+}
+
+div#root {
+  min-height: 100vh;
+}
+
+.font-dirtyline {
+  font-family: "Dirtyline";
+}
+
+.background-image-overlay {
+  background-image: url(./assets/images/overlay.png);
+}
