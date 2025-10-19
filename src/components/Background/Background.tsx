@@ -1,7 +1,6 @@
-import React, { useRef, useEffect, useMemo, useState } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import overlay from "@/assets/images/overlay.png";
 
 type Props = {
   noiseImageUrl?: string;
@@ -89,13 +88,12 @@ void main() {
 
 function GradientMaterial({
   noiseTexture,
-  debug,
 }: {
   noiseTexture: THREE.Texture;
   debug?: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
-  const { size, viewport } = useThree();
+  const { size } = useThree();
 
   const uniforms = useMemo(
     () => ({
@@ -139,7 +137,7 @@ function GradientMaterial({
     return () => window.removeEventListener("scroll", onScroll);
   }, [uniforms]);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (!materialRef.current) return;
     materialRef.current.uniforms.uTime.value += delta;
   });
@@ -154,7 +152,7 @@ function GradientMaterial({
         uniforms={uniforms}
         depthWrite={false}
         depthTest={false}
-        onUpdate={(mat: THREE.ShaderMaterial) => {
+        onUpdate={() => {
           noiseTexture.wrapS = noiseTexture.wrapT = THREE.RepeatWrapping;
           noiseTexture.needsUpdate = true;
         }}
