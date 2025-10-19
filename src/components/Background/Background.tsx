@@ -162,7 +162,9 @@ function GradientMaterial({
 }
 
 export default function Background({
-  noiseImageUrl = "src/assets/images/noise.png",
+  noiseImageUrl = import.meta.env.PROD
+    ? "/portfolio/assets/images/noise.png"
+    : "src/assets/images/noise.png",
   debug = false,
 }: Props) {
   const tex = useMemo(
@@ -225,7 +227,7 @@ export default function Background({
         <Canvas
           gl={{ antialias: true, alpha: false }}
           camera={{ position: [0, 0, 1], fov: 50 }}
-          style={{position: "absolute"}}
+          style={{ position: "absolute" }}
         >
           <ambientLight intensity={0.5} />
           <GradientMaterial noiseTexture={tex} debug={debug} />

@@ -13,7 +13,7 @@ export default defineConfig({
   },
   base: "/portfolio/",
   build: {
-    outDir: "../build",
+    outDir: "build",
     emptyOutDir: true,
   },
 });
