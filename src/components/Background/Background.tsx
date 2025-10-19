@@ -1,5 +1,6 @@
 import { useRef, useEffect, useMemo, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import noise from "@/assets/images/noise.png"
 import * as THREE from "three";
 
 type Props = {
@@ -162,9 +163,7 @@ function GradientMaterial({
 }
 
 export default function Background({
-  noiseImageUrl = import.meta.env.PROD
-    ? "/portfolio/assets/images/noise.png"
-    : "src/assets/images/noise.png",
+  noiseImageUrl = noise,
   debug = false,
 }: Props) {
   const tex = useMemo(
