@@ -1,6 +1,6 @@
 import { useRef, useEffect, useMemo, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import noise from "@/assets/images/noise.png"
+import noise from "@/assets/images/noise.png";
 import * as THREE from "three";
 
 type Props = {
@@ -99,10 +99,10 @@ function GradientMaterial({
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
-      uColor1: { value: new THREE.Color("#c4774b") },
-      uColor2: { value: new THREE.Color("#ce9169") },
-      uColor3: { value: new THREE.Color("#ddb594") },
-      uColor4: { value: new THREE.Color("#ddb594") },
+      uColor1: { value: new THREE.Color("#71717b") },
+      uColor2: { value: new THREE.Color("#9f9fa9") },
+      uColor3: { value: new THREE.Color("#d4d4d8") },
+      uColor4: { value: new THREE.Color("#e4e4e7") },
       uSize: { value: 0.4 },
       uOffset: { value: new THREE.Vector2(0.42, 0.6) },
       uSpeed: { value: 0.02 },
@@ -214,7 +214,7 @@ export default function Background({
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 h-screen flex justify-center items-center w-full">
+    <div className="absolute top-0 left-0 h-screen flex justify-center items-center w-full">
       <div
         style={{
           display: "block",
