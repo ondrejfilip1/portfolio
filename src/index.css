@@ -213,3 +213,30 @@ div#root {
     opacity: 1;
   }
 }
+
+.hover-github-link:hover div {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.hover-github-link div {
+  transition-duration: 0.2s;
+  transition-property: opacity transform;
+  transform: scale(1);
+}
+
+.hover-github-link a {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  opacity: 0;
+  z-index: 10;
+  width: 100%;
+  transition-duration: 0.2s;
+  transition-property: opacity transform;
+}
+
+.hover-github-link:hover a {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
