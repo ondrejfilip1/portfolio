@@ -103,8 +103,8 @@ function GradientMaterial({
       uColor2: { value: new THREE.Color("#9f9fa9") },
       uColor3: { value: new THREE.Color("#d4d4d8") },
       uColor4: { value: new THREE.Color("#e4e4e7") },
-      uSize: { value: 0.4 },
-      uOffset: { value: new THREE.Vector2(0.42, 0.6) },
+      uSize: { value: 0.25 },
+      uOffset: { value: new THREE.Vector2(0.8, 0.2) },
       uSpeed: { value: 0.02 },
       uNoiseTexture: { value: noiseTexture },
       uSimulationTexture: { value: null },
@@ -221,6 +221,7 @@ export default function Background({
           width: "40dvw",
           height: "40dvw",
           clipPath,
+          position: "relative"
         }}
       >
         <Canvas

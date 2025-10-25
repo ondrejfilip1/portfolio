@@ -81,6 +81,10 @@ div#root {
   min-height: 100vh;
 }
 
+div#render {
+  transition: .75s transform;
+}
+
 .font-dirtyline {
   font-family: "Dirtyline";
 }
@@ -239,4 +243,15 @@ div#root {
 .hover-github-link:hover a {
   opacity: 1;
   transform: translateX(-50%) scale(1);
+}
+
+.bigger-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+@layer base {
+  button, [role="button"] {
+    cursor: pointer;
+  }
 }

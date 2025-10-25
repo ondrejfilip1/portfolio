@@ -18,34 +18,38 @@ import rlp2 from "@/assets/images/projects/rlp2.jpeg";
 import rlp3 from "@/assets/images/projects/rlp3.jpeg";
 
 export default function Experience() {
+  const projectsData = [
+    {
+      name: "My first E-Shop project",
+      tech: ["react", "mern", "stripe", "shadcn/ui"],
+      image: [eshop],
+      url: "https://github.com/ondrejfilip1/rocnikova-prace-e-shop",
+    },
+    {
+      name: "Mini E-Shop with an AI-powered story generator",
+      tech: ["react", "mern", "stripe", "shadcn/ui", "gen-ai"],
+      image: [ai, ai1, ai2, ai3, ai4, ai5],
+      url: "https://github.com/ondrejfilip1/skupinovy-projekt-2025",
+    },
+    {
+      name: "Air traffic control training application",
+      tech: ["react native", "expo", "typescript"],
+      image: [rlp, rlp1, rlp2, rlp3],
+      url: "https://github.com/ondrejfilip1/otazky-rlp",
+    },
+    {
+      name: "Password manager",
+      tech: ["react", "mern", "shadcn/ui"],
+      image: [pm, pm1, pm2],
+      url: "https://github.com/ondrejfilip1/password-manager",
+    },
+  ];
+
   return (
     <div className="h-dvh w-full px-8">
-      <div className="sm:grid-cols-2 grid grid-cols-1 gap-5">
-        <ProjectBox
-          name="My first E-Shop project"
-          tech={["react", "mern", "stripe", "shadcn/ui"]}
-          image={[eshop]}
-          url="https://github.com/ondrejfilip1/rocnikova-prace-e-shop"
-        />
-        <ProjectBox
-          name="Mini E-Shop with an AI-powered story generator"
-          tech={["react", "mern", "stripe", "shadcn/ui", "gen-ai"]}
-          image={[ai, ai1, ai2, ai3, ai4, ai5]}
-          url="https://github.com/ondrejfilip1/skupinovy-projekt-2025"
-        />
-        <ProjectBox
-          name="Air traffic control training application"
-          tech={["react native", "expo", "typescript"]}
-          image={[rlp, rlp1, rlp2, rlp3]}
-          url="https://github.com/ondrejfilip1/otazky-rlp"
-        />
-        <ProjectBox
-          name="Password manager"
-          tech={["react", "mern", "shadcn/ui"]}
-          image={[pm, pm1, pm2]}
-          url="https://github.com/ondrejfilip1/password-manager"
-        />
-      </div>
+      {projectsData.map((value, index) => (
+        <ProjectBox key={index} {...value} leftSided={index % 2 == 1} />
+      ))}
     </div>
   );
 }
