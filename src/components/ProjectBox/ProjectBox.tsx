@@ -6,13 +6,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion, useAnimation, useInView } from "motion/react";
 import {
   CursorFollow,
   CursorProvider,
 } from "@/components/ui/shadcn-io/animated-cursor";
 import { ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ProjectBoxProps {
   name: string;
@@ -25,19 +25,35 @@ interface ProjectBoxProps {
 export default function ProjectBox(props: ProjectBoxProps) {
   const [showCursor, setShowCursor] = useState(true);
 
+  const techControls = useAnimation();
+  const nameRef = useRef(null);
+  const projectRef = useRef(null);
+
+  const nameInView = useInView(nameRef);
+  const projectInView = useInView(projectRef);
+
+  useEffect(() => {
+    if (nameInView) techControls.start("visible");
+    else techControls.start("hidden");
+  }, [nameInView]);
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <motion.div
-        initial={{ opacity: 0, translateY: "100px" }}
-        whileInView={{ opacity: 1, translateY: 0 }}
-        transition={{
-          x: { type: "spring", bounce: 0 },
+        ref={projectRef}
+        initial={{ opacity: 0, translateY: 100 }}
+        animate={projectInView ? "visible" : "hidden"}
+        variants={{
+          hidden: { opacity: 0, translateY: 100 },
+          visible: { opacity: 1, translateY: 0 },
         }}
-        className="flex gap-12 items-center justify-center group my-10"
+        transition={{ duration: 0.6 }}
+        className="flex gap-12 items-center justify-center group my-10 xl:flex-row flex-col xl:mx-8"
       >
         <Carousel
           className={
-            "max-w-[66.666vw] w-full" + (props.leftSided ? " order-2" : "")
+            "xl:flex-[1_0_66%] max-w-full w-full order-1" +
+            (props.leftSided ? " xl:order-0" : "")
           }
         >
           <CursorProvider>
@@ -78,18 +94,41 @@ export default function ProjectBox(props: ProjectBoxProps) {
           />
         </Carousel>
 
-        <div className="max-w-[33.333vw] w-full">
-          <div className="text-3xl mb-4 mt-2 text-zinc-800">{props.name}</div>
-          <div className="flex gap-4">
+        <div className="xl:flex-[1_0_33%] max-w-full w-full text-center xl:text-left">
+          <div className="text-3xl mb-4 mt-2 text-zinc-800" ref={nameRef}>
+            {props.name}
+          </div>
+
+          <motion.div
+            className="flex gap-4 flex-wrap justify-center xl:justify-normal"
+            initial="hidden"
+            animate={techControls}
+            variants={{
+              visible: {
+                transition: { staggerChildren: 0.07 },
+              },
+            }}
+          >
             {props.tech.map((value, index) => (
-              <div
-                className="py-2 px-4 text-base bg-zinc-800 text-zinc-100"
+              <motion.div
                 key={index}
+                className="py-2 px-4 text-base bg-zinc-800 text-zinc-100"
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 40,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { type: "spring", bounce: 0 },
+                  },
+                }}
               >
                 {value}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </div>

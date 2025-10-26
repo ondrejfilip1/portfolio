@@ -1,7 +1,8 @@
 import Header from "@/components/Header/Header";
 import Background from "@/components/Background/Background";
 import { useEffect, useState } from "react";
-import Experience from "./Experience";
+import Projects from "./Projects";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   const [offset, setOffset] = useState<number>(0);
@@ -44,7 +45,8 @@ export default function Home() {
           </h1>
         </div>
       </div>
-      <Experience />
+      <Projects />
+      <Footer />
     </>
   );
 }

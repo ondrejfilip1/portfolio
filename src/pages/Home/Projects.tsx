@@ -1,4 +1,5 @@
 import ProjectBox from "@/components/ProjectBox/ProjectBox";
+
 import pm from "@/assets/images/projects/pm.jpeg";
 import pm1 from "@/assets/images/projects/pm1.jpeg";
 import pm2 from "@/assets/images/projects/pm2.jpeg";
@@ -17,7 +18,7 @@ import rlp1 from "@/assets/images/projects/rlp1.jpeg";
 import rlp2 from "@/assets/images/projects/rlp2.jpeg";
 import rlp3 from "@/assets/images/projects/rlp3.jpeg";
 
-export default function Experience() {
+export default function Projects() {
   const projectsData = [
     {
       name: "My first E-Shop project",
@@ -46,7 +47,7 @@ export default function Experience() {
   ];
 
   return (
-    <div className="h-dvh w-full px-8">
+    <div className="min-h-screen w-full px-8">
       {projectsData.map((value, index) => (
         <ProjectBox key={index} {...value} leftSided={index % 2 == 1} />
       ))}
