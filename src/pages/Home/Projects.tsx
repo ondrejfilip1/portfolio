@@ -47,7 +47,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen w-full px-8">
+    <div className="min-h-screen w-full px-8" id="projects">
       {projectsData.map((value, index) => (
         <ProjectBox key={index} {...value} leftSided={index % 2 == 1} />
       ))}
