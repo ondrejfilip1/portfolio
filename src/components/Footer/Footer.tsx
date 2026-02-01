@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
       </div>
       <Link
-        className="flex gap-2 items-center justify-center text-xl text-zinc-600"
+        className="flex gap-2 items-center justify-center text-xl text-zinc-600 mb-6"
         to={"https://github.com/ondrejfilip1/"}
         target="_blank"
       >
