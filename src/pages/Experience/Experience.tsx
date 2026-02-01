@@ -93,7 +93,7 @@ export default function Experience() {
             </div>
 
             <h1 className="text-5xl tracking-tight my-14 text-zinc-800">
-              Programming languages
+              Languages
             </h1>
             <div className="flex flex-wrap gap-2">
               {programmingLanguagesIcons.map((item, index) => (

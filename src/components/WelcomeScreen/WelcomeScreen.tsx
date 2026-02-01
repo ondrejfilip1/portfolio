@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
+// TODO: replace react-countup with the new library
 
 export default function WelcomeScreen() {
   const [hidden, setHidden] = useState(false);
