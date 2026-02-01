@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header shouldAnimate={true} />
       <Background />
       <div className="h-dvh w-full">
         <div className="pointer-events-none relative grid size-full grid-rows-[1fr_auto_1fr] p-8">
