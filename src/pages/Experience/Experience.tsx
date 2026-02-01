@@ -25,7 +25,7 @@ import typescript from "@/assets/images/experience/programming_languages/typescr
 
 import ExperienceBox from "./ExperienceBox";
 
-import NumberFlow, { continuous, type Value } from "@number-flow/react";
+import NumberFlow, { continuous } from "@number-flow/react";
 import { useEffect, useState } from "react";
 
 export default function Experience() {
