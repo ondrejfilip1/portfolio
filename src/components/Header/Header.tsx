@@ -17,15 +17,15 @@ export default function Header(props: HeaderProps) {
         <Link className="link" to="/" onClick={() => scrollById("root")}>
           <span>HOME</span>HOME
         </Link>
-        <Link className="link" to="/experience">
-          <span>EXPERIENCE</span>EXPERIENCE
-        </Link>
         <Link
           className="link"
           to={"/#projects"}
           onClick={() => scrollById("projects")}
         >
           <span>PROJECTS</span>PROJECTS
+        </Link>
+        <Link className="link" to="/experience">
+          <span>EXPERIENCE</span>EXPERIENCE
         </Link>
         <Link className="link" to="/contact">
           <span>CONTACT</span>CONTACT

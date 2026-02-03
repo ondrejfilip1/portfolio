@@ -1,6 +1,10 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-interface ExperienceBoxProps {
+export interface ExperienceBoxProps {
   image: string;
   tooltip: string;
 }
@@ -15,7 +19,7 @@ export default function ExperienceBox(props: ExperienceBoxProps) {
           draggable={false}
         />
       </TooltipTrigger>
-      <TooltipContent>
+      <TooltipContent className="!bg-[#f4f4f5] text-zinc-800 [&_svg]:hidden!" sideOffset={8}>
         <p>{props.tooltip}</p>
       </TooltipContent>
     </Tooltip>

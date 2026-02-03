@@ -1,4 +1,4 @@
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -11,14 +11,23 @@ export default function Footer() {
           <span className="font-dirtyline leading-[1.08]">P</span>
         </div>
       </div>
-      <Link
-        className="flex gap-2 items-center justify-center text-xl text-zinc-600 mb-6"
-        to={"https://github.com/ondrejfilip1/"}
-        target="_blank"
-      >
-        <FaGithub />
-        ondrejfilip1
-      </Link>
+
+      <div className="flex items-center justify-center mb-6">
+        <Link
+          className="text-zinc-500 hover:text-zinc-600 transition-colors p-2"
+          to={"https://github.com/ondrejfilip1/"}
+          target="_blank"
+        >
+          <FaGithub size={30} />
+        </Link>
+        <Link
+          className="text-zinc-500 hover:text-zinc-600 transition-colors p-2"
+          to={"https://www.linkedin.com/in/ond%C5%99ej-filip-26518534b/"}
+          target="_blank"
+        >
+          <FaLinkedin size={30} />
+        </Link>
+      </div>
     </>
   );
 }

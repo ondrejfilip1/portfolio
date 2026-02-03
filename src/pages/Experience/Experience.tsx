@@ -17,19 +17,20 @@ import reactnative from "@/assets/images/experience/frontend/reactnative.svg";
 import shadcnui from "@/assets/images/experience/frontend/shadcnui.svg";
 import tailwindcss from "@/assets/images/experience/frontend/tailwindcss.svg";
 import vite from "@/assets/images/experience/frontend/vite.svg";
+import electron from "@/assets/images/experience/frontend/electron.svg";
 
 // programming_languages
 import java from "@/assets/images/experience/programming_languages/java.svg";
 import javascript from "@/assets/images/experience/programming_languages/javascript.svg";
 import typescript from "@/assets/images/experience/programming_languages/typescript.svg";
 
-import ExperienceBox from "./ExperienceBox";
+import ExperienceBox, { type ExperienceBoxProps } from "./ExperienceBox";
 
 import NumberFlow, { continuous } from "@number-flow/react";
 import { useEffect, useState } from "react";
 
 export default function Experience() {
-  const frontendIcons = [
+  const frontendIcons: ExperienceBoxProps[] = [
     { image: html, tooltip: "HTML" },
     { image: css, tooltip: "CSS" },
     { image: tailwindcss, tooltip: "TailwindCSS" },
@@ -39,9 +40,10 @@ export default function Experience() {
     { image: vite, tooltip: "Vite" },
     { image: shadcnui, tooltip: "shadcn/ui" },
     { image: expo, tooltip: "Expo" },
+    { image: electron, tooltip: "Electron" },
   ];
 
-  const backendIcons = [
+  const backendIcons: ExperienceBoxProps[] = [
     { image: nodejs, tooltip: "Node.js" },
     { image: expressjs, tooltip: "Express.js" },
     { image: mongodb, tooltip: "MongoDB" },
@@ -50,7 +52,7 @@ export default function Experience() {
     { image: stripe, tooltip: "Stripe" },
   ];
 
-  const programmingLanguagesIcons = [
+  const programmingLanguagesIcons: ExperienceBoxProps[] = [
     { image: javascript, tooltip: "JavaScript" },
     { image: typescript, tooltip: "TypeScript" },
     { image: java, tooltip: "Java" },
@@ -106,6 +108,8 @@ export default function Experience() {
               <div className="mb-20">
                 <p className="text-zinc-800 text-5xl mb-1">
                   <NumberFlow
+                    animated={true}
+                    respectMotionPreference={false}
                     plugins={[continuous]}
                     spinTiming={{ duration: 1500, easing: "ease" }}
                     value={years}
@@ -119,6 +123,8 @@ export default function Experience() {
               <div>
                 <p className="text-zinc-800 text-5xl my-1">
                   <NumberFlow
+                    animated={true}
+                    respectMotionPreference={false}
                     plugins={[continuous]}
                     spinTiming={{ duration: 1500, easing: "ease" }}
                     value={projects}
