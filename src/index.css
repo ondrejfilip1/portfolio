@@ -251,3 +251,18 @@ div#root {
     cursor: pointer;
   }
 }
+
+.appear-anim {
+  animation: 1s 1s appear-anim backwards;
+  opacity: 1;
+}
+
+@keyframes appear-anim {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

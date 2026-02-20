@@ -5,6 +5,7 @@ import Projects from "./Projects";
 import Footer from "@/components/Footer/Footer";
 import { useLocation } from "react-router-dom";
 import { scrollById } from "@/lib/others";
+import { ChevronDown } from "lucide-react";
 
 export default function Home() {
   const [offset, setOffset] = useState<number>(0);
@@ -38,11 +39,15 @@ export default function Home() {
     };
   }, []);
 
+  const scrollDown = () => {
+    window.scrollBy(0, window.outerHeight);
+  };
+
   return (
     <>
       <Header shouldAnimate={true} />
       <Background />
-      <div className="h-dvh w-full">
+      <div className="h-dvh w-full relative">
         <div className="pointer-events-none relative grid size-full grid-rows-[1fr_auto_1fr] p-8">
           <h1 className="relative bottom-18 mix-blend-difference text-[#8e8e84] row-start-2 justify-self-center text-[10vw] leading-[1.15] tracking-tighter">
             <div className="relative" style={{ left: `${offset}px` }}>
@@ -56,6 +61,13 @@ export default function Home() {
             </div>
           </h1>
         </div>
+        <ChevronDown
+                      radius={0}
+              strokeLinejoin="miter"
+              strokeLinecap="butt"
+          onClick={scrollDown}
+          className="absolute w-10 h-10 p-1 z-10 appear-anim cursor-pointer bottom-30 left-1/2 transform -translate-x-1/2 text-zinc-600 hover:text-zinc-800 transition-colors"
+        />
       </div>
       <Projects />
       <Footer />

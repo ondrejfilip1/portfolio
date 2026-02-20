@@ -9,7 +9,7 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
   return (
     <div
-      className={`flex py-6 px-12 mix-blend-difference text-[#d8d8d5] items-center justify-between font-light z-10 sticky w-full left-0 top-0 ${
+      className={`flex py-6 px-12 mix-blend-difference text-[#d8d8d5] items-center md:justify-between justify-center font-light z-10 sticky w-full left-0 top-0 ${
         props.shouldAnimate ? "header-anim" : ""
       }`}
     >
@@ -31,7 +31,7 @@ export default function Header(props: HeaderProps) {
           <span>CONTACT</span>CONTACT
         </Link>
       </div>
-      <div className="hover-github-link relative">
+      <div className="hover-github-link relative md:block hidden">
         <Link
           className="flex gap-2 items-center justify-center"
           to={"https://github.com/ondrejfilip1/"}

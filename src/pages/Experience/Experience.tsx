@@ -26,8 +26,9 @@ import typescript from "@/assets/images/experience/programming_languages/typescr
 
 import ExperienceBox, { type ExperienceBoxProps } from "./ExperienceBox";
 
-import NumberFlow, { continuous } from "@number-flow/react";
-import { useEffect, useState } from "react";
+import NumberFlow, { continuous } from "@number-flow/react"
+
+import { useState, useEffect } from "react";
 
 export default function Experience() {
   const frontendIcons: ExperienceBoxProps[] = [
