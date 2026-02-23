@@ -24,7 +24,7 @@ import java from "@/assets/images/experience/programming_languages/java.svg";
 import javascript from "@/assets/images/experience/programming_languages/javascript.svg";
 import typescript from "@/assets/images/experience/programming_languages/typescript.svg";
 
-import ExperienceBox, { type ExperienceBoxProps } from "./ExperienceBox";
+import ExperienceBox, { type ExperienceBoxProps } from "@/components/ExperienceBox/ExperienceBox";
 
 import NumberFlow, { continuous } from "@number-flow/react"
 

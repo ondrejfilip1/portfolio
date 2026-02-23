@@ -12,6 +12,12 @@ import ai4 from "@/assets/images/projects/ai4.png";
 import ai5 from "@/assets/images/projects/ai5.jpeg";
 
 import eshop from "@/assets/images/projects/eshop.jpeg";
+import eshop1 from "@/assets/images/projects/eshop1.png";
+import eshop2 from "@/assets/images/projects/eshop2.png";
+import eshop3 from "@/assets/images/projects/eshop3.png";
+import eshop4 from "@/assets/images/projects/eshop4.png";
+import eshop5 from "@/assets/images/projects/eshop5.png";
+import eshop6 from "@/assets/images/projects/eshop6.png";
 
 import rlp from "@/assets/images/projects/rlp.jpeg";
 import rlp1 from "@/assets/images/projects/rlp1.jpeg";
@@ -23,12 +29,12 @@ export default function Projects() {
     {
       name: "My first E-Shop project",
       tech: ["react", "mern", "stripe", "shadcn/ui"],
-      image: [eshop],
+      image: [eshop, eshop1, eshop2, eshop3, eshop4, eshop5, eshop6],
       url: "https://github.com/ondrejfilip1/rocnikova-prace-e-shop",
     },
     {
       name: "Mini E-Shop with an AI-powered story generator",
-      tech: ["react", "mern", "stripe", "shadcn/ui", "gen-ai"],
+      tech: ["react", "mern", "stripe", "shadcn/ui", "generative ai"],
       image: [ai, ai1, ai2, ai3, ai4, ai5],
       url: "https://github.com/ondrejfilip1/skupinovy-projekt-2025",
     },

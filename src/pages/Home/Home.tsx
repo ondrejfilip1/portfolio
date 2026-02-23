@@ -40,7 +40,7 @@ export default function Home() {
   }, []);
 
   const scrollDown = () => {
-    window.scrollBy(0, window.outerHeight);
+    window.scrollTo(0, window.outerHeight);
   };
 
   return (

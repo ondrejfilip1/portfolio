@@ -1,5 +1,5 @@
 import Header from "@/components/Header/Header";
-import ContactLink from "./ContactLink";
+import ContactLink from "@/components/ContactLink/ContactLink";
 
 export default function Contact() {
   return (
