@@ -1,3 +1,4 @@
+import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -19,6 +20,13 @@ export default function Footer() {
           target="_blank"
         >
           <FaGithub size={30} />
+        </Link>
+                <Link
+          className="text-zinc-500 hover:text-zinc-600 transition-colors p-2"
+          to={"mailto:ondrejfilipstranky@gmail.com"}
+          target="_blank"
+        >
+          <Mail size={30} />
         </Link>
         <Link
           className="text-zinc-500 hover:text-zinc-600 transition-colors p-2"

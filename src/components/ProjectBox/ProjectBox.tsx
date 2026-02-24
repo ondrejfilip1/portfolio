@@ -17,11 +17,15 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogTrigger, DialogContent } from "../ui/dialog";
 
-interface ProjectBoxProps {
+export interface ProjectBoxItem {
   name: string;
   tech: string[];
   image: string[];
   url: string;
+  githubLink?: boolean;
+}
+
+interface ProjectBoxProps extends ProjectBoxItem {
   leftSided: boolean;
 }
 
@@ -84,7 +88,7 @@ export default function ProjectBox(props: ProjectBoxProps) {
               }
             >
               <div className="pl-3 pr-2 py-2 text-white bg-black/20 backdrop-blur-lg flex gap-1 items-center">
-                GITHUB
+                {props.githubLink ? "GITHUB" : "WEB"}
                 <ArrowUpRight />
               </div>
             </CursorFollow>
@@ -136,7 +140,11 @@ export default function ProjectBox(props: ProjectBoxProps) {
               >
                 <X radius={0} strokeLinejoin="miter" strokeLinecap="butt" />
               </Button>
-              <img className="w-full h-full object-center overflow-hidden object-contain" src={props.image[current]} alt={props.name} />
+              <img
+                className="w-full h-full object-center overflow-hidden object-contain"
+                src={props.image[current]}
+                alt={props.name}
+              />
             </DialogContent>
           </Dialog>
         </Carousel>
