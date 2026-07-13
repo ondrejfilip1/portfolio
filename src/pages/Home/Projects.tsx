@@ -53,7 +53,7 @@ export default function Projects() {
     },
     {
       name: "Paintings by Tim Lee",
-      tech: ["html", "css", "bootstrap", "js"],
+      tech: ["next.js", "typescript", "shadcn/ui", "seo"],
       image: [timlee, timlee1, timlee2, timlee3],
       url: "https://www.paintingsbytimlee.co.uk/",
     },
