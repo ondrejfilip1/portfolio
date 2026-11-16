@@ -35,6 +35,10 @@ import orbita from "@/assets/images/projects/orbita.png";
 import orbita1 from "@/assets/images/projects/orbita1.png";
 import orbita2 from "@/assets/images/projects/orbita2.png";
 
+import lvr from "@/assets/images/projects/lvr.jpeg";
+import lvr1 from "@/assets/images/projects/lvr1.jpeg";
+import lvr2 from "@/assets/images/projects/lvr2.jpeg";
+
 export default function Projects() {
   const projectsData: ProjectBoxItem[] = [
     {
@@ -56,6 +60,13 @@ export default function Projects() {
       tech: ["next.js", "typescript", "shadcn/ui", "seo"],
       image: [timlee, timlee1, timlee2, timlee3],
       url: "https://www.paintingsbytimlee.co.uk/",
+    },
+    {
+      name: "The Louvre Experience",
+      tech: ["next.js", "typescript", "shadcn/ui", "threejs"],
+      image: [lvr, lvr1, lvr2],
+      url: "https://github.com/ondrejfilip1/otazky-rlp",
+      githubLink: true,
     },
     {
       name: "Air traffic control training application",
@@ -81,7 +92,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen w-full px-8" id="projects">
+    <div className="relative min-h-screen w-full px-8" id="projects">
       {projectsData.map((value, index) => (
         <ProjectBox key={index} {...value} leftSided={index % 2 == 1} />
       ))}

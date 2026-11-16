@@ -1,4 +1,4 @@
-import { useRef, useEffect, useMemo, useState } from "react";
+import { useRef, useEffect, useMemo, useImperativeHandle, type Ref } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import noise from "@/assets/images/noise.png";
 import * as THREE from "three";
@@ -6,6 +6,7 @@ import * as THREE from "three";
 type Props = {
   noiseImageUrl?: string;
   debug?: boolean;
+  ref?: Ref<HTMLDivElement>;
 };
 
 const vertexShader = `
@@ -34,7 +35,6 @@ uniform float uColorMixer;
 uniform float uMenuMode;
 uniform float uAdditionalZoom;
 uniform vec2 uAdditionalOffset;
-uniform float uScrollOffset;
 
 void main() {
     vec2 nUv = (-.5 + vUv) * 2.;
@@ -47,7 +47,6 @@ void main() {
 
     float additionalZoom = uAdditionalZoom * (1. - uMenuMode);
     vec2 offset = uOffset + uAdditionalOffset * (1. - uMenuMode);
-    offset.y -= uScrollOffset;
 
     vec2 bUv = nUv * (uSize * 2. + additionalZoom) + offset * uMenuMode; // dUv
     vec2 nUv1 = bUv + offset * (1. - uMenuMode) + uTime * uSpeed;
@@ -113,9 +112,8 @@ function GradientMaterial({
       uMenuMode: { value: 0 },
       uAdditionalZoom: { value: 0 },
       uAdditionalOffset: { value: new THREE.Vector2(0, 0) },
-      uScrollOffset: { value: 0 },
     }),
-    [noiseTexture]
+    [noiseTexture],
   );
 
   useEffect(() => {
@@ -126,17 +124,6 @@ function GradientMaterial({
     };
     onResize();
   }, [size, uniforms]);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (uniforms.uScrollOffset) {
-        uniforms.uScrollOffset.value = window.scrollY / window.innerHeight;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [uniforms]);
 
   useFrame((_state, delta) => {
     if (!materialRef.current) return;
@@ -165,21 +152,21 @@ function GradientMaterial({
 export default function Background({
   noiseImageUrl = noise,
   debug = false,
+  ref,
 }: Props) {
   const tex = useMemo(
     () => new THREE.TextureLoader().load(noiseImageUrl),
-    [noiseImageUrl]
+    [noiseImageUrl],
   );
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
 
-  const [clipPath, setClipPath] = useState(
-    "polygon(0 0, 88% 0, 100% 100%, 12% 100%)"
-  );
+  const boxRef = useRef<HTMLDivElement>(null);
+  useImperativeHandle(ref, () => boxRef.current!);
 
   useEffect(() => {
     const multiplier = 6;
-    let target = { x: 0, y: 0 };
-    let current = { x: 0, y: 0 };
+    const target = { x: 0, y: 0 };
+    const current = { x: 0, y: 0 };
     let animationFrameId: number;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -190,16 +177,20 @@ export default function Background({
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
     const animate = () => {
-      current.x = lerp(current.x, target.x, 0.08);
-      current.y = lerp(current.y, target.y, 0.08);
+      const nextX = lerp(current.x, target.x, 0.08);
+      const nextY = lerp(current.y, target.y, 0.08);
+      if (
+        Math.abs(nextX - current.x) < 0.0001 &&
+        Math.abs(nextY - current.y) < 0.0001
+      ) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+      current.x = nextX;
+      current.y = nextY;
 
-      const p1 = 88 + current.x * multiplier;
-      const p2 = 12 - current.x * multiplier;
-      const p3 = 100 - current.y * multiplier;
-      const p4 = current.y * multiplier;
-
-      const polygon = `polygon(0 ${p4}%, ${p1}% 0, 100% ${p3}%, ${p2}% 100%)`;
-      setClipPath(polygon);
+      boxRef.current?.style.setProperty("--mx", `${current.x * multiplier}%`);
+      boxRef.current?.style.setProperty("--my", `${current.y * multiplier}%`);
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -214,16 +205,17 @@ export default function Background({
   }, []);
 
   return (
-    <div className="absolute top-0 left-0 h-screen flex justify-center items-center w-full">
-      <div
-        style={{
-          display: "block",
-          width: "40dvw",
-          height: "40dvw",
-          clipPath,
-          position: "relative"
-        }}
-      >
+    <div
+      aria-hidden="true"
+      className="absolute left-0 top-0 size-(--hero-box) overflow-hidden will-change-transform"
+      ref={boxRef}
+      style={{
+        clipPath:
+          "polygon(0 calc(var(--my, 0%) * var(--shape, 1)), calc(100% - (12% - var(--mx, 0%)) * var(--shape, 1)) 0, 100% calc(100% - var(--my, 0%) * var(--shape, 1)), calc((12% - var(--mx, 0%)) * var(--shape, 1)) 100%)",
+      }}
+    >
+      {/* fixed-size canvas so it doesn't resize while the box animates */}
+      <div className="absolute left-1/2 top-1/2 -translate-1/2 w-[max(var(--hero-box),var(--box-max-w,0px))] h-[max(var(--hero-box),var(--box-max-h,0px))]">
         <Canvas
           gl={{ antialias: true, alpha: false }}
           camera={{ position: [0, 0, 1], fov: 50 }}

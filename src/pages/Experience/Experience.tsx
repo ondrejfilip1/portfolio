@@ -18,19 +18,27 @@ import shadcnui from "@/assets/images/experience/frontend/shadcnui.svg";
 import tailwindcss from "@/assets/images/experience/frontend/tailwindcss.svg";
 import vite from "@/assets/images/experience/frontend/vite.svg";
 import electron from "@/assets/images/experience/frontend/electron.svg";
+import nextjs from "@/assets/images/experience/frontend/nextjs.svg";
+import shopify from "@/assets/images/experience/frontend/shopify.svg";
 
 // programming_languages
 import java from "@/assets/images/experience/programming_languages/java.svg";
 import javascript from "@/assets/images/experience/programming_languages/javascript.svg";
 import typescript from "@/assets/images/experience/programming_languages/typescript.svg";
 
-import ExperienceBox, { type ExperienceBoxProps } from "@/components/ExperienceBox/ExperienceBox";
+import ExperienceBox, {
+  type ExperienceBoxProps,
+} from "@/components/ExperienceBox/ExperienceBox";
 
-import NumberFlow, { continuous } from "@number-flow/react"
+import NumberFlow, { continuous } from "@number-flow/react";
 
 import { useState, useEffect } from "react";
+import { usePageMeta } from "@/lib/others";
+import { pages } from "@/lib/seo";
 
 export default function Experience() {
+  usePageMeta(pages.experience);
+
   const frontendIcons: ExperienceBoxProps[] = [
     { image: html, tooltip: "HTML" },
     { image: css, tooltip: "CSS" },
@@ -39,9 +47,11 @@ export default function Experience() {
     { image: react, tooltip: "React" },
     { image: reactnative, tooltip: "React Native" },
     { image: vite, tooltip: "Vite" },
+    { image: nextjs, tooltip: "Next.js" },
     { image: shadcnui, tooltip: "shadcn/ui" },
     { image: expo, tooltip: "Expo" },
     { image: electron, tooltip: "Electron" },
+    { image: shopify, tooltip: "Shopify" },
   ];
 
   const backendIcons: ExperienceBoxProps[] = [
@@ -61,13 +71,15 @@ export default function Experience() {
 
   const [years, setYears] = useState(0);
   const [projects, setProjects] = useState(0);
+  const YEARS_OF_EXPERIENCE: number = 4;
+  const PROJECTS_BUILT: number = 12;
 
   useEffect(() => {
-    setYears(3);
+    setYears(YEARS_OF_EXPERIENCE);
     setProjects(9);
     // fix for weird number counting
     setTimeout(() => {
-      setProjects(10);
+      setProjects(PROJECTS_BUILT);
     }, 500);
   }, []);
 
@@ -75,29 +87,30 @@ export default function Experience() {
     <>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <div className="container m-auto px-4 h-full relative flex flex-col gap-14 lg:gap-4 lg:flex-row my-14 lg:my-auto">
+        <main className="container m-auto px-4 h-full relative flex flex-col gap-14 lg:gap-4 lg:flex-row my-14 lg:my-auto">
           <div className="w-full">
-            <h1 className="text-5xl tracking-tight mb-14 text-zinc-800">
+            <h1 className="sr-only">Experience & Skills</h1>
+            <h2 className="text-5xl tracking-tight mb-14 text-zinc-800">
               Frontend
-            </h1>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {frontendIcons.map((item, index) => (
                 <ExperienceBox {...item} key={index} />
               ))}
             </div>
 
-            <h1 className="text-5xl tracking-tight my-14 text-zinc-800">
+            <h2 className="text-5xl tracking-tight my-14 text-zinc-800">
               Backend
-            </h1>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {backendIcons.map((item, index) => (
                 <ExperienceBox {...item} key={index} />
               ))}
             </div>
 
-            <h1 className="text-5xl tracking-tight my-14 text-zinc-800">
+            <h2 className="text-5xl tracking-tight my-14 text-zinc-800">
               Languages
-            </h1>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {programmingLanguagesIcons.map((item, index) => (
                 <ExperienceBox {...item} key={index} />
@@ -136,7 +149,7 @@ export default function Experience() {
               </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </>
   );

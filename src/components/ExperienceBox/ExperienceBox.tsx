@@ -16,10 +16,16 @@ export default function ExperienceBox(props: ExperienceBoxProps) {
         <img
           className="min-w-16 max-w-16 w-16"
           src={props.image}
+          alt={props.tooltip}
+          width={64}
+          height={64}
           draggable={false}
         />
       </TooltipTrigger>
-      <TooltipContent className="!bg-[#f4f4f5] text-zinc-800 [&_svg]:hidden!" sideOffset={8}>
+      <TooltipContent
+        className="!bg-[#f4f4f5] text-zinc-800 [&_svg]:hidden!"
+        sideOffset={8}
+      >
         <p>{props.tooltip}</p>
       </TooltipContent>
     </Tooltip>
