@@ -95,7 +95,12 @@ export default function Home() {
         tl?.kill();
         gsap.set(box, { clearProps: "width,height" });
         const vw = layer.clientWidth;
-        const vh = window.innerHeight;
+        const probe = document.createElement("div");
+        probe.style.cssText = "position:absolute;top:0;height:100vh";
+        document.body.appendChild(probe);
+        const vh = probe.offsetHeight || window.innerHeight;
+        probe.remove();
+        const heroY = layer.parentElement!.offsetHeight / 2;
         const hero = box.offsetWidth;
         const rad = (ROTATION * Math.PI) / 180;
         const cos = Math.cos(rad);
@@ -114,19 +119,19 @@ export default function Home() {
           "--box-max-h": `${Math.max(...targets.map((t) => t.h), 0)}px`,
         });
 
-        const start = vh * 0.5;
+        const start = heroY;
         gsap.set(box, {
           xPercent: -50,
           yPercent: -50,
           x: vw / 2,
-          y: vh / 2,
+          y: heroY,
           width: hero,
           height: hero,
           rotation: 0,
           "--shape": 1,
         });
         tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
-        tl.to(box, { y: vh / 2 - start, duration: start }, 0);
+        tl.to(box, { y: heroY - start, duration: start }, 0);
 
         let prevEnd = start;
         pins.forEach((pin, i) => {
